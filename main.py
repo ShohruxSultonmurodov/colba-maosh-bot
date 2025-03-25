@@ -130,7 +130,7 @@ async def maoshim_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"- Soliq: {maktab_soliq:,}\n"
                 f"- Plastikka: {maktab_plastikka:,}\n"
                 f"- Beriladi: {maktab_beriladi:,}\n\n"
-                f"💵 <b>Hisoblangan: {int(hisoblangan):,} so'm</b> \n"
+                f"💵 <b>Beriladigan: {int(hisoblangan):,} so'm</b> \n"
                 f"💵 <b>Jami maosh:</b> {int(jami):,} so'm"
             ).replace(",", " ")
 
