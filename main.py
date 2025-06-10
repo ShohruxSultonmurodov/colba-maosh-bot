@@ -98,21 +98,41 @@ async def maoshim_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             jami = row.get("Jami") or "0"
 
             # Maosh bo‘limlarini ajratib olish
-            markaz_fiks = int(row.get("Markaz Fiks") or 0)
-            markaz_kpi = int(row.get("Markaz KPI") or 0)
-            bonus = int(row.get("Markaz Bonus") or 0)
-            avans = int(row.get("Markaz Avans") or 0)
-            soliq = int(row.get("Markaz Soliq") or 0)
-            plastikka = int(row.get("Markaz Plastikka") or 0)
-            beriladi = int(row.get("Markaz Beriladi") or 0)
+            # markaz_fiks = int(row.get("Markaz Fiks") or 0)
+            # markaz_kpi = int(row.get("Markaz KPI") or 0)
+            # bonus = int(row.get("Markaz Bonus") or 0)
+            # avans = int(row.get("Markaz Avans") or 0)
+            # soliq = int(row.get("Markaz Soliq") or 0)
+            # plastikka = int(row.get("Markaz Plastikka") or 0)
+            # beriladi = int((row.get("Markaz Beriladi") or "0").replace(",", ""))
 
-            maktab_fiks = int(row.get("Maktab Fiks") or 0)
-            maktab_kpi = int(row.get("Maktab KPI") or 0)
-            maktab_avans = int(row.get("Maktab Avans") or 0)
-            maktab_soliq = int(row.get("Maktab Soliq") or 0)
-            maktab_plastikka = int(row.get("Maktab Plastikka") or 0)
-            maktab_beriladi = int(row.get("Maktab Beriladi") or 0)
-            hisoblangan = int(row.get("Hisoblangan") or 0)
+
+            # maktab_fiks = int(row.get("Maktab Fiks") or 0)
+            # maktab_kpi = int(row.get("Maktab KPI") or 0)
+            # maktab_avans = int(row.get("Maktab Avans") or 0)
+            # maktab_soliq = int(row.get("Maktab Soliq") or 0)
+            # maktab_plastikka = int(row.get("Maktab Plastikka") or 0)
+            # maktab_beriladi = int(row.get("Maktab Beriladi") or 0)
+            # hisoblangan = int(row.get("Hisoblangan") or 0)
+            def to_int(value):
+                """Vergullarni olib tashlab, int() ga aylantiradi."""
+                return int((value or "0").replace(",", ""))
+
+            markaz_fiks = to_int(row.get("Markaz Fiks"))
+            markaz_kpi = to_int(row.get("Markaz KPI"))
+            bonus = to_int(row.get("Markaz Bonus"))
+            avans = to_int(row.get("Markaz Avans"))
+            soliq = to_int(row.get("Markaz Soliq"))
+            plastikka = to_int(row.get("Markaz Plastikka"))
+            beriladi = to_int(row.get("Markaz Beriladi"))
+
+            maktab_fiks = to_int(row.get("Maktab Fiks"))
+            maktab_kpi = to_int(row.get("Maktab KPI"))
+            maktab_avans = to_int(row.get("Maktab Avans"))
+            maktab_soliq = to_int(row.get("Maktab Soliq"))
+            maktab_plastikka = to_int(row.get("Maktab Plastikka"))
+            maktab_beriladi = to_int(row.get("Maktab Beriladi"))
+            hisoblangan = to_int(row.get("Hisoblangan"))
 
             text = (
                 f"👨‍💼 <b>Ism:</b> {ism}\n"
@@ -158,7 +178,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Botni ishga tushirish
 def main():
-    app = ApplicationBuilder().token("8035553721:AAFIMfKjxP4hlWXtTe_L9RoLAjNwSFA8R6g").build()
+    app = ApplicationBuilder().token("8001819632:AAHlbN3KaG4sP45gyrZaJ7wxQJpJUbTHHlQ").build()
 
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler("start", start)],
