@@ -37,7 +37,7 @@ def request_with_fallback(url):
 
 # /start komandasi
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Salom! Ro'yxatdan o'tish uchun iltimos login (ID) kiriting:")
+    await update.message.reply_text("Assalomu aleykum! Ro'yxatdan o'tish uchun iltimos login (ID) kiriting:")
     return LOGIN
 
 # Login (ID) qabul qilinadi
@@ -71,7 +71,7 @@ async def parol_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
                 await update.message.reply_text(
                     f"<b>{ism}</b>, siz ro'yxatdan muvoffaqiyatli o'tdingiz!\n"
-                    "Endi har oy maoshingizni onlayn ko'rib borishingiz mumkin! ✅",
+                    "Endi siz kompaniyamiz xodimlari uchun tayyorlangan qulayiklardan foydalanishiz mumkin! ✅",
                     parse_mode="HTML",
                     reply_markup=reply_markup
                 )
