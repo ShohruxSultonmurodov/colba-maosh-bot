@@ -66,7 +66,7 @@ async def parol_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             if update_response.status_code in [200, 201]:
                 keyboard = [
-                    [KeyboardButton("📊 Maoshim"), KeyboardButton("⚠ Xatolikka ariza")]
+                    [KeyboardButton("📊 Maoshim"), KeyboardButton("⚠ Xatolikka ariza"), KeyboardButton("📋 Bo'limlarga murojat")]
                 ]
                 reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
                 await update.message.reply_text(
@@ -171,6 +171,16 @@ async def xatolikka_ariza_handler(update: Update, context: ContextTypes.DEFAULT_
         disable_web_page_preview=True
     )
 
+# ⚠ Bolimlarga murojat komandasi
+async def bolimlarga_murojat_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    clickup_link = "https://forms.clickup.com/9008240922/p/f/8cexp8u-2258/IT3FQOY51OU6GAL1OL/bolimlargamurojaatuchun"
+    await update.message.reply_text(
+        f"📄 Bo'limlarga murojat qoldirish uchun ushbu havolani bosing: \n\n"
+        f"<a href='{clickup_link}'>👉 Bo'limlarga murojat</a>",
+        parse_mode="HTML",
+        disable_web_page_preview=True
+    )
+    
 # /cancel komandasi
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Ro'yxatdan o'tish bekor qilindi.")
@@ -192,6 +202,7 @@ def main():
     app.add_handler(conv_handler)
     app.add_handler(MessageHandler(filters.TEXT & filters.Regex("^(📊 Maoshim)$"), maoshim_handler))
     app.add_handler(MessageHandler(filters.TEXT & filters.Regex("^(⚠ Xatolikka ariza)$"), xatolikka_ariza_handler))
+    app.add_handler(MessageHandler(filters.TEXT & filters.Regex("^(📋 Bo'limlarga murojat)$"), bolimlarga_murojat_handler))
     app.run_polling()
 
 if __name__ == "__main__":
