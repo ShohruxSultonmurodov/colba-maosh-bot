@@ -96,24 +96,6 @@ async def maoshim_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             ism = row.get("F.I.O")
             id_ = row.get("ID")
             jami = row.get("Jami") or "0"
-
-            # Maosh bo‘limlarini ajratib olish
-            # markaz_fiks = int(row.get("Markaz Fiks") or 0)
-            # markaz_kpi = int(row.get("Markaz KPI") or 0)
-            # bonus = int(row.get("Markaz Bonus") or 0)
-            # avans = int(row.get("Markaz Avans") or 0)
-            # soliq = int(row.get("Markaz Soliq") or 0)
-            # plastikka = int(row.get("Markaz Plastikka") or 0)
-            # beriladi = int((row.get("Markaz Beriladi") or "0").replace(",", ""))
-
-
-            # maktab_fiks = int(row.get("Maktab Fiks") or 0)
-            # maktab_kpi = int(row.get("Maktab KPI") or 0)
-            # maktab_avans = int(row.get("Maktab Avans") or 0)
-            # maktab_soliq = int(row.get("Maktab Soliq") or 0)
-            # maktab_plastikka = int(row.get("Maktab Plastikka") or 0)
-            # maktab_beriladi = int(row.get("Maktab Beriladi") or 0)
-            # hisoblangan = int(row.get("Hisoblangan") or 0)
             def to_int(value):
                 """Vergullarni olib tashlab, int() ga aylantiradi."""
                 return int((value or "0").replace(",", ""))
