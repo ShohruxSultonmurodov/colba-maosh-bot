@@ -36,9 +36,37 @@ def request_with_fallback(url):
     return None
 
 # /start komandasi
+# /start komandasi (YANGILANGAN)
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = str(update.effective_user.id)
+
+    # Maoshlar jadvalidan foydalanuvchi bor-yo'qligini tekshir
+    data = request_with_fallback("Maoshlar")
+    if data is None:
+        await update.message.reply_text("Xatolik yuz berdi. Iltimos, keyinroq urinib ko'ring.")
+        return ConversationHandler.END
+
+    # User bor bo'lsa — avtomatik tanib ol
+    for row in data:
+        if row.get("Telegram_ID") == user_id:
+            ism = row.get("F.I.O") or "Xodim"
+
+            keyboard = [
+                [KeyboardButton("📊 Maoshim"), KeyboardButton("⚠ Xatolikka ariza"), KeyboardButton("📋 Bo'limlarga murojat")]
+            ]
+            reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
+
+            await update.message.reply_text(
+                f"👋 Assalomu aleykum, <b>{ism}</b>!\nColba kompaniyasi HR botiga xush kelibsiz! 🎉",
+                parse_mode="HTML",
+                reply_markup=reply_markup
+            )
+            return ConversationHandler.END
+
+    # Agar Telegram_ID yo'q bo'lsa — ro'yxatdan o'tkazamiz
     await update.message.reply_text("Assalomu aleykum! Ro'yxatdan o'tish uchun iltimos login (ID) kiriting:")
     return LOGIN
+
 
 # Login (ID) qabul qilinadi
 async def login_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -70,7 +98,7 @@ async def parol_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 ]
                 reply_markup = ReplyKeyboardMarkup(keyboard, resize_keyboard=True)
                 await update.message.reply_text(
-                    f"<b>{ism}</b>, siz ro'yxatdan muvoffaqiyatli o'tdingiz!\n"
+                    f"<b>{ism}</b>, siz Colba kompaniyasi HR botiga ro'yxatdan muvoffaqiyatli o'tdingiz!\n"
                     "Endi siz kompaniyamiz xodimlari uchun tayyorlangan qulayiklardan foydalanishiz mumkin! ✅",
                     parse_mode="HTML",
                     reply_markup=reply_markup
