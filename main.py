@@ -123,9 +123,11 @@ async def maoshim_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if row.get("Telegram_ID") == user_id:
             ism = row.get("F.I.O")
             id_ = row.get("ID")
+            oy = row.get("OY") or ""
+            fillial = row.get("Fillial") or ""
             jami = row.get("Jami") or "0"
+
             def to_int(value):
-                """Vergullarni olib tashlab, int() ga aylantiradi."""
                 return int((value or "0").replace(",", ""))
 
             markaz_fiks = to_int(row.get("Markaz Fiks"))
@@ -145,6 +147,8 @@ async def maoshim_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             hisoblangan = to_int(row.get("Hisoblangan"))
 
             text = (
+                f"🗓 <b>Oy:</b> {oy}\n"
+                f"🏢 <b>Maosh oladigan filial:</b> {fillial}\n"
                 f"👨‍💼 <b>Ism:</b> {ism}\n"
                 f"🆔 <b>ID:</b> {id_}\n\n"
                 f"🏢 <b>Markaz:</b>\n"
@@ -162,7 +166,7 @@ async def maoshim_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"- Soliq: {maktab_soliq:,}\n"
                 f"- Plastikka: {maktab_plastikka:,}\n"
                 f"- Beriladi: {maktab_beriladi:,}\n\n"
-                f"💵 <b>Hisoblangan: {int(hisoblangan):,} so'm</b> \n"
+                f"💵 <b>Hisoblangan: {hisoblangan:,} so'm</b>\n"
                 f"💵 <b>Beriladigan:</b> {int(jami):,} so'm"
             ).replace(",", " ")
 
