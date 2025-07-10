@@ -167,7 +167,7 @@ async def maoshim_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"- Plastikka: {maktab_plastikka:,}\n"
                 f"- Beriladi: {maktab_beriladi:,}\n\n"
                 f"💵 <b>Hisoblangan: {hisoblangan:,} so'm</b>\n"
-                f"💵 <b>Beriladigan:</b> {int(jami):,} so'm"
+                f"💵 <b>Beriladigan:</b> {to_int(jami):,} so'm"
             ).replace(",", " ")
 
             await update.message.reply_text(text, parse_mode="HTML")
