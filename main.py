@@ -202,7 +202,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # Botni ishga tushirish
 def main():
-    app = ApplicationBuilder().token("7781412220:AAEiCJCmpNRoz6cP9CLoGoq3KqJi2aSNvD4").build()
+    app = ApplicationBuilder().token("7781412220:AAE_h0RMVjnZSKCwzf68jVEw4ArnWnyNft4").build()
 
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler("start", start)],
