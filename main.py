@@ -144,6 +144,13 @@ async def maoshim_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             maktab_soliq = to_int(row.get("Maktab Soliq"))
             maktab_plastikka = to_int(row.get("Maktab Plastikka"))
             maktab_beriladi = to_int(row.get("Maktab Beriladi"))
+
+            chilonzor_fiks = to_int(row.get("Chilonzor FIX"))
+            chilonzor_kpi = to_int(row.get("Chilonzor KPI"))
+            chilonzor_avans = to_int(row.get("Chilonzor Avans"))
+            chilonzor_soliq = to_int(row.get("Chilonzor Soliq"))
+            chilonzor_plastikka = to_int(row.get("Chilonzor Plastikka"))
+            chilonzor_beriladi = to_int(row.get("Chilonzor Berialadi"))
             hisoblangan = to_int(row.get("Hisoblangan"))
 
             text = (
@@ -166,6 +173,13 @@ async def maoshim_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"- Soliq: {maktab_soliq:,}\n"
                 f"- Plastikka: {maktab_plastikka:,}\n"
                 f"- Beriladi: {maktab_beriladi:,}\n\n"
+                f"🏫 <b>Chilonzor:</b>\n"
+                f"- Fiks: {chilonzor_fiks:,}\n"
+                f"- KPI: {chilonzor_kpi:,}\n"
+                f"- Avans: {chilonzor_avans:,}\n"
+                f"- Soliq: {chilonzor_soliq:,}\n"
+                f"- Plastikka: {chilonzor_plastikka:,}\n"
+                f"- Beriladi: {chilonzor_beriladi:,}\n\n"
                 f"💵 <b>Hisoblangan: {hisoblangan:,} so'm</b>\n"
                 f"💵 <b>Beriladigan:</b> {to_int(jami):,} so'm"
             ).replace(",", " ")
