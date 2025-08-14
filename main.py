@@ -166,14 +166,14 @@ async def maoshim_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"- Soliq: {soliq:,}\n"
                 f"- Plastikka: {plastikka:,}\n"
                 f"- Beriladi: {beriladi:,}\n\n"
-                f"🏫 <b>Maktab:</b>\n"
+                f"🏫 <b>Maktab (Tinchlik):</b>\n"
                 f"- Fiks: {maktab_fiks:,}\n"
                 f"- KPI: {maktab_kpi:,}\n"
                 f"- Avans: {maktab_avans:,}\n"
                 f"- Soliq: {maktab_soliq:,}\n"
                 f"- Plastikka: {maktab_plastikka:,}\n"
                 f"- Beriladi: {maktab_beriladi:,}\n\n"
-                f"🏫 <b>Chilonzor:</b>\n"
+                f"🏫 <b>Maktab (Chilonzor):</b>\n"
                 f"- Fiks: {chilonzor_fiks:,}\n"
                 f"- KPI: {chilonzor_kpi:,}\n"
                 f"- Avans: {chilonzor_avans:,}\n"
@@ -235,5 +235,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
